@@ -174,10 +174,13 @@
     <Content Include="App_Data\OPEEAPPS_log.ldf">
       <DependentUpon>OPEEAPPS.mdf</DependentUpon>
     </Content>
+    <Content Include="Chauca\CalidadGasto\Regiones\CalidadAmazonas.aspx" />
+    <Content Include="Chauca\CalidadGasto\SeleccionCalidadRegion.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="EquiposOPEE.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -195,6 +198,7 @@
     <Content Include="img\logomakr_6iotcu_ByH_icon.ico" />
     <Content Include="img\Logomakr_8XIvKW.png" />
     <Content Include="img\my_logo.png" />
+    <Content Include="Martha\CalidadPrueba.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -227,8 +231,11 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="SeguimientoPeiyPoi\Inicio.aspx" />
+    <Content Include="SeguimientoPeiyPoi\ProgramacionPeiPoi.aspx" />
     <Content Include="Site.Master" />
     <Content Include="Tarev\Indicadores\IndicadoresRegion.aspx" />
+    <Content Include="Tarev\Indicadores\IndicadoresRegion2.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -360,6 +367,20 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Chauca\CalidadGasto\Regiones\CalidadAmazonas.aspx.cs">
+      <DependentUpon>CalidadAmazonas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chauca\CalidadGasto\Regiones\CalidadAmazonas.aspx.designer.cs">
+      <DependentUpon>CalidadAmazonas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Chauca\CalidadGasto\SeleccionCalidadRegion.aspx.cs">
+      <DependentUpon>SeleccionCalidadRegion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chauca\CalidadGasto\SeleccionCalidadRegion.aspx.designer.cs">
+      <DependentUpon>SeleccionCalidadRegion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -374,11 +395,39 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EquiposOPEE.aspx.cs">
+      <DependentUpon>EquiposOPEE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EquiposOPEE.aspx.designer.cs">
+      <DependentUpon>EquiposOPEE.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Martha\CalidadPrueba.aspx.cs">
+      <DependentUpon>CalidadPrueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Martha\CalidadPrueba.aspx.designer.cs">
+      <DependentUpon>CalidadPrueba.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeguimientoPeiyPoi\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SeguimientoPeiyPoi\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SeguimientoPeiyPoi\ProgramacionPeiPoi.aspx.cs">
+      <DependentUpon>ProgramacionPeiPoi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SeguimientoPeiyPoi\ProgramacionPeiPoi.aspx.designer.cs">
+      <DependentUpon>ProgramacionPeiPoi.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -400,6 +449,13 @@
     </Compile>
     <Compile Include="Tarev\Indicadores\IndicadoresRegion.aspx.designer.cs">
       <DependentUpon>IndicadoresRegion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tarev\Indicadores\IndicadoresRegion2.aspx.cs">
+      <DependentUpon>IndicadoresRegion2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tarev\Indicadores\IndicadoresRegion2.aspx.designer.cs">
+      <DependentUpon>IndicadoresRegion2.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

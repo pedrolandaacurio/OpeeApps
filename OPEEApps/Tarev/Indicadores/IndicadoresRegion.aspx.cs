@@ -13,5 +13,10 @@ namespace OPEEApps.Tarev.Indicadores
         {
 
         }
+
+        protected void AgregarVariablesForm_ItemInserted(object sender, FormViewInsertedEventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "VariableIngresoExitoso();", true);
+        }
     }
 }

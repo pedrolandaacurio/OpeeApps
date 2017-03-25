@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Indicadores - Nivel Regional" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IndicadoresRegion.aspx.cs" Inherits="OPEEApps.Tarev.Indicadores.IndicadoresRegion" %>
+﻿<%@ Page Title="Indicadores - Paso 1" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IndicadoresRegion.aspx.cs" Inherits="OPEEApps.Tarev.Indicadores.IndicadoresRegion" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <!--Contenido-->
     <div class="container">
@@ -9,68 +9,86 @@
         </div>
         <hr />
         <!--Aplicativo-->
-        <div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">Grupos de variables</div>
-                <div class="panel-body">
-                    <asp:UpdatePanel ID="VistaGrupoUpdate" runat="server">
-                        <ContentTemplate>
-                            <asp:ListView ID="GruposVista" runat="server" DataKeyNames="Id" DataSourceID="SqlDataSource1">
-                                <ItemTemplate>
-                                    <asp:Label Text='<%# Eval("Id") %>' runat="server" ID="IdLabel" Visible="false" />
-                                    <div class="alert alert-dismissible alert-info">
-                                        <asp:LinkButton runat="server" CommandName="Delete" ID="DeleteButton" CausesValidation="False" CssClass="close" OnClientClick="EliminarGrupo()">&times;</asp:LinkButton>
-                                        <asp:Label Text='<%# Bind("grupo") %>' runat="server" ID="grupoLabel" />
-                                        <asp:LinkButton runat="server" Text="Editar" CommandName="Edit" ID="EditButton" CausesValidation="False" Visible="false" />
-                                        <asp:LinkButton runat="server" Text="Nuevo" CommandName="New" ID="NewButton" CausesValidation="False" Visible="false" />
+        <div class="panel panel-default">
+            <div class="panel-heading">Variables</div>
+            <div class="panel-body">
+                <asp:UpdatePanel runat="server" ID="AgregarVariablesUpdatePanel">
+                    <ContentTemplate>
+                        <asp:FormView runat="server" ID="AgregarVariablesForm" DataKeyNames="Id" DataSourceID="AgregarVariablesSQLCon" DefaultMode="Insert" CssClass="form-horizontal" Style="width: 100%" OnItemInserted="AgregarVariablesForm_ItemInserted">
+                            <InsertItemTemplate>
+                                <div class="input-group" style="width: 100%">
+                                    <div class="input-group-btn">
+                                        <asp:DropDownList Text='<%# Bind("grupo") %>' runat="server" ID="grupoDropDownList" CssClass="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" DataSourceID="DropDownListGruposSQLCon" DataTextField="grupo" DataValueField="grupo" />
+                                        <asp:SqlDataSource runat="server" ID="DropDownListGruposSQLCon" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' SelectCommand="SELECT [grupo] FROM [grupos_variables]"></asp:SqlDataSource>
                                     </div>
-                                </ItemTemplate>
-                                <EmptyDataTemplate>
-                                    <center>No hay grupos de variables aún...</center>
-                                </EmptyDataTemplate>
-                            </asp:ListView>
-                            <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' DeleteCommand="DELETE FROM [grupos_variables] WHERE [Id] = @Id" InsertCommand="INSERT INTO [grupos_variables] ([grupo]) VALUES (@grupo)" SelectCommand="SELECT * FROM [grupos_variables]" UpdateCommand="UPDATE [grupos_variables] SET [grupo] = @grupo WHERE [Id] = @Id">
-                                <DeleteParameters>
-                                    <asp:Parameter Name="Id" Type="Int32"></asp:Parameter>
-                                </DeleteParameters>
-                                <InsertParameters>
-                                    <asp:Parameter Name="grupo" Type="String"></asp:Parameter>
-                                </InsertParameters>
-                                <UpdateParameters>
-                                    <asp:Parameter Name="grupo" Type="String"></asp:Parameter>
-                                    <asp:Parameter Name="Id" Type="Int32"></asp:Parameter>
-                                </UpdateParameters>
-                            </asp:SqlDataSource>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="AgregarNuevoGrupo" EventName="ItemInserted" />
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-                <div class="panel-footer">
-                    <a data-toggle="modal" data-target="#AgregarGrupoModal" href="#" class="btn btn-xs btn-default">Agregar nuevo grupo de variables</a>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">Variables</div>
-                <div class="panel-body">
-                    
-                </div>
-                <div class="panel-footer">
-                    <asp:Button runat="server" ID="AgregarVariableBtn" data-toggle="modal" data-target="#AgregarVariableModal" href="#" class="btn btn-xs btn-default" Text="Agregar nueva variable" />
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">Indicadores</div>
-                <div class="panel-body"></div>
+                                    <asp:TextBox Text='<%# Bind("variable") %>' runat="server" ID="variableTextBox" CssClass="form-control" placeholder="Escriba nombre de la variable" />
+                                    <div class="input-group-btn">
+                                        <asp:LinkButton runat="server" Text="Agregar" CommandName="Insert" ID="InsertButton" CausesValidation="True" CssClass="btn btn-default" />
+                                    </div>
+                                </div>
+                                <asp:LinkButton runat="server" Text="Cancelar" CommandName="Cancel" ID="InsertCancelButton" CausesValidation="False" CssClass="btn btn-default" Visible="false" />
+                            </InsertItemTemplate>
+                        </asp:FormView>
+                        <asp:SqlDataSource runat="server" ID="AgregarVariablesSQLCon" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' DeleteCommand="DELETE FROM [variables] WHERE [Id] = @Id" InsertCommand="INSERT INTO [variables] ([grupo], [variable]) VALUES (@grupo, @variable)" SelectCommand="SELECT * FROM [variables]" UpdateCommand="UPDATE [variables] SET [grupo] = @grupo, [variable] = @variable WHERE [Id] = @Id">
+                            <DeleteParameters>
+                                <asp:Parameter Name="Id" Type="Int32"></asp:Parameter>
+                            </DeleteParameters>
+                            <InsertParameters>
+                                <asp:Parameter Name="grupo" Type="String"></asp:Parameter>
+                                <asp:Parameter Name="variable" Type="String"></asp:Parameter>
+                            </InsertParameters>
+                            <UpdateParameters>
+                                <asp:Parameter Name="grupo" Type="String"></asp:Parameter>
+                                <asp:Parameter Name="variable" Type="String"></asp:Parameter>
+                                <asp:Parameter Name="Id" Type="Int32"></asp:Parameter>
+                            </UpdateParameters>
+                        </asp:SqlDataSource>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Resultados preliminares</div>
-                <div class="panel-body">...</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Variables</div>
+            <div class="panel-body">
+                <asp:UpdatePanel runat="server" ID="VistaVariables">
+                    <ContentTemplate>
+                        <asp:DropDownList runat="server" ID="SelectordeGrupodeVariables" DataSourceID="SelectorGruposDeVariables" DataTextField="grupo" DataValueField="grupo" CssClass="form-control" AutoPostBack="true"></asp:DropDownList>
+                        <asp:SqlDataSource runat="server" ID="SelectorGruposDeVariables" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' SelectCommand="SELECT DISTINCT [grupo] FROM [variables]"></asp:SqlDataSource>
+                        <hr />
+                        <asp:ListView runat="server" ID="ListaDeVariablesEnUpdate" DataSourceID="ListaDeVariables" DataKeyNames="Id">
+                            <ItemTemplate>
+                                <div class="alert alert-dismissible alert-info">
+                                    <asp:LinkButton runat="server" class="close" data-dismiss="alert" CommandName="Delete" ID="DeleteButton" CausesValidation="False" OnClientClick="ConfirmacionEliminarVariable()">&times;</asp:LinkButton>
+                                    <asp:Label Text='<%# Bind("variable") %>' runat="server" ID="variableLabel" />
+                                </div>
+                                <asp:Label Text='<%# Eval("Id") %>' runat="server" ID="IdLabel" Visible="false" />
+                                <asp:LinkButton runat="server" Visible="false" Text="Editar" CommandName="Edit" ID="EditButton" CausesValidation="False" />
+                                <asp:LinkButton runat="server" Visible="false" Text="Nuevo" CommandName="New" ID="NewButton" CausesValidation="False" />
+                            </ItemTemplate>
+                        </asp:ListView>
+                        <asp:SqlDataSource runat="server" ID="ListaDeVariables" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' SelectCommand="SELECT [variable], [Id] FROM [variables] WHERE ([grupo] = @grupo)" DeleteCommand="DELETE FROM [variables] WHERE [Id] = @Id" InsertCommand="INSERT INTO [variables] ([variable]) VALUES (@variable)" UpdateCommand="UPDATE [variables] SET [variable] = @variable WHERE [Id] = @Id">
+                            <DeleteParameters>
+                                <asp:Parameter Name="Id" Type="Int32"></asp:Parameter>
+                            </DeleteParameters>
+                            <InsertParameters>
+                                <asp:Parameter Name="variable" Type="String"></asp:Parameter>
+                            </InsertParameters>
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="SelectordeGrupodeVariables" PropertyName="SelectedValue" Name="grupo" Type="String"></asp:ControlParameter>
+                            </SelectParameters>
+                            <UpdateParameters>
+                                <asp:Parameter Name="variable" Type="String"></asp:Parameter>
+                                <asp:Parameter Name="Id" Type="Int32"></asp:Parameter>
+                            </UpdateParameters>
+                        </asp:SqlDataSource>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="AgregarVariablesForm" EventName="ItemInserted" />
+                    </Triggers>
+                </asp:UpdatePanel>
             </div>
         </div>
+        <a runat="server" class="btn btn-block btn-default" href="IndicadoresRegion2.aspx">Siguiente paso</a>
     </div>
     <!--Modal de Información-->
     <div class="modal fade" tabindex="-1" role="dialog" id="InfoRegInd">
@@ -78,7 +96,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Bienvenido a la Herramienta de Cálculo de de Indicadores (Nivel Regional)</h4>
+                    <h4 class="modal-title">Herramienta de Cálculo de de Indicadores</h4>
                 </div>
                 <div class="modal-body">
                     ...
@@ -89,64 +107,24 @@
             </div>
         </div>
     </div>
-    <!--Modal de Agregar Grupo de Variables-->
-    <div class="modal fade" tabindex="-1" role="dialog" id="AgregarGrupoModal">
+    <!--Modal de Ingreso exitoso de Variable-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="VariableIngresoExistosoModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Agregar grupo de variables</h4>
-                </div>
                 <div class="modal-body">
-                    <asp:UpdatePanel ID="InsertandoGruposUpdate" runat="server">
-                        <ContentTemplate>
-                            <div class="input-group">
-                                <asp:TextBox runat="server" ID="Textboxdeprueba" CssClass="form-control"></asp:TextBox>
-                                <span class="input-group-btn">
-                                    <asp:LinkButton runat="server" ID="inpulinkprueba" CssClass="btn btn-default" Text="Ayayay"></asp:LinkButton>
-                                </span>
-                            </div>
-                            <asp:FormView runat="server" ID="AgregarNuevoGrupo" DataKeyNames="Id" DataSourceID="SqlDataSource1" DefaultMode="Insert" RowStyle-Wrap="True">
-                                <InsertItemTemplate>
-                                    <div class="input-group">
-                                <asp:TextBox runat="server" ID="Textboxdeprueba" CssClass="form-control"></asp:TextBox>
-                                <span class="input-group-btn">
-                                    <asp:LinkButton runat="server" ID="inpulinkprueba" CssClass="btn btn-default" Text="Ayayay"></asp:LinkButton>
-                                </span>
-                            </div>
-                                    <div class="input-group">
-                                            <asp:TextBox Text='<%# Bind("grupo") %>' runat="server" ID="grupoTextBox" CssClass="form-control" placeholder="Escriba el nombre del grupo de variables..." />
-                                            <span class="input-group-btn">
-                                                <asp:LinkButton runat="server" Text="Insertar" CommandName="Insert" ID="InsertButton" CausesValidation="True" CssClass="btn btn-default" />
-                                            </span>
-                                        </div>
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="grupoTextBox" CssClass="text-danger" Text="Debe ingresar un nombre al grupo de variables"></asp:RequiredFieldValidator>
-                                    <asp:LinkButton runat="server" Text="Cancelar" CommandName="Cancel" ID="InsertCancelButton" CausesValidation="False" CssClass="btn btn-default btn-sm" Visible="false" />
-                                </InsertItemTemplate>
-                            </asp:FormView>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                    Ingreso exitoso
                 </div>
             </div>
         </div>
-    </div>
-    <!--Modal de Agregar Variables-->
-    <div class="modal fade" tabindex="-1" role="dialog" id="AgregarVariableModal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Agregar variables</h4>
-                </div>
-                <div class="modal-body">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        function EliminarGrupo() {
-            return confirm("¿Seguro que quieres eliminar este grupo de variables?")
+    </div>    
+    <script type="text/javascript">
+        function VariableIngresoExitoso() {
+            $('#VariableIngresoExistosoModal').modal('show');
+            setTimeout($('#VariableIngresoExistosoModal').modal('hide'), 5000);
+        }
+
+        function ConfirmacionEliminarVariable() {
+            confirm("¿Está seguro de eliminar esta variable?")
         }
     </script>
 </asp:Content>

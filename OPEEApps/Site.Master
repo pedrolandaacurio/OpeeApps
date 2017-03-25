@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+    <title><%: Page.Title %> - OpeeApps</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -56,11 +56,23 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tarev <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a runat="server" data-toggle="modal" data-target="#SelectorTarevInd" href="#">Proyección de Indicadores</a></li>
+                                <li><a runat="server" href="Tarev/Indicadores/IndicadoresRegion.aspx">Proyección de Indicadores</a></li>
                                 <li><a runat="server" href="#">Calidad de Gasto <span class="label label-info">Beta</span></a></li>
                             </ul>
                         </li>
-                        <li><a runat="server" href="~/About">Acerca de</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Chauca <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a runat="server" href="~/Chauca/CalidadGasto/SeleccionCalidadRegion.aspx">Semáforo de Calidad de Gasto</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Martha <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a runat="server" href="~/Martha/CalidadPrueba.aspx">Calidad de Gasto</a></li>
+                            </ul>
+                        </li>
+                        <li><a runat="server" href="~/SeguimientoPeiyPoi/ProgramacionPeiPoi.aspx">Apps</a></li>
                         <li><a runat="server" href="~/Contact">Contacto</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
@@ -84,7 +96,7 @@
         </div>
         <div class="container body-content">
             <!--Modal de Selección de nivel tarev ind-->
-        <div class="modal fade" tabindex="-1" role="dialog" id="SelectorTarevInd">
+        <div class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

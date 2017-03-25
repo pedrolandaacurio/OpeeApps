@@ -13,75 +13,75 @@ namespace OPEEApps.Tarev.Indicadores {
     public partial class IndicadoresRegion {
         
         /// <summary>
-        /// Control VistaGrupoUpdate.
+        /// Control AgregarVariablesUpdatePanel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel VistaGrupoUpdate;
+        protected global::System.Web.UI.UpdatePanel AgregarVariablesUpdatePanel;
         
         /// <summary>
-        /// Control GruposVista.
+        /// Control AgregarVariablesForm.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView GruposVista;
+        protected global::System.Web.UI.WebControls.FormView AgregarVariablesForm;
         
         /// <summary>
-        /// Control SqlDataSource1.
+        /// Control AgregarVariablesSQLCon.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.SqlDataSource AgregarVariablesSQLCon;
         
         /// <summary>
-        /// Control AgregarVariableBtn.
+        /// Control VistaVariables.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AgregarVariableBtn;
+        protected global::System.Web.UI.UpdatePanel VistaVariables;
         
         /// <summary>
-        /// Control InsertandoGruposUpdate.
+        /// Control SelectordeGrupodeVariables.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel InsertandoGruposUpdate;
+        protected global::System.Web.UI.WebControls.DropDownList SelectordeGrupodeVariables;
         
         /// <summary>
-        /// Control Textboxdeprueba.
+        /// Control SelectorGruposDeVariables.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textboxdeprueba;
+        protected global::System.Web.UI.WebControls.SqlDataSource SelectorGruposDeVariables;
         
         /// <summary>
-        /// Control inpulinkprueba.
+        /// Control ListaDeVariablesEnUpdate.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton inpulinkprueba;
+        protected global::System.Web.UI.WebControls.ListView ListaDeVariablesEnUpdate;
         
         /// <summary>
-        /// Control AgregarNuevoGrupo.
+        /// Control ListaDeVariables.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView AgregarNuevoGrupo;
+        protected global::System.Web.UI.WebControls.SqlDataSource ListaDeVariables;
     }
 }
